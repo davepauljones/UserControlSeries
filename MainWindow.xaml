@@ -5,8 +5,35 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:UserControlSeries"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        Title="MainWindow" Height="315" Width="800">
+    <Canvas>
+        <local:SignalPowerMeter x:Name="MyMeter" Canvas.Left="100" Canvas.Top="20"/>
+
+        <StackPanel Canvas.Left="440" Canvas.Top="15" Width="280">
+            <!-- Mode Toggle Buttons -->
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,6">
+                <Button x:Name="BtnSignalMode" Content="Signal (RX)" Width="135" Height="28" Margin="0,0,10,0" Click="BtnSignalMode_Click"/>
+                <Button x:Name="BtnPowerMode" Content="Power (TX)" Width="135" Height="28" Click="BtnPowerMode_Click"/>
+            </StackPanel>
+
+            <!-- 10-Second Random Signal Animation Trigger -->
+            <Button x:Name="BtnTestAnim" Content="Simulate Incoming Signal (10s)" Height="28" Margin="0,0,0,10" Click="BtnTestAnim_Click"/>
+
+            <!-- Slider 1: Original 0 - 100 -->
+            <TextBlock x:Name="TxtSlider100" Text="Active Mode (0-100): 0" FontWeight="Bold" Margin="0,2,0,2"/>
+            <Slider x:Name="Slider100" Minimum="0" Maximum="100" Value="0" Margin="0,0,0,8" ValueChanged="Slider100_ValueChanged"/>
+
+            <!-- Slider 2: 0 - 255 (Signal / Byte Range) -->
+            <TextBlock x:Name="TxtSlider255" Text="Signal Raw (0-255): 0" Margin="0,2,0,2"/>
+            <Slider x:Name="Slider255" Minimum="0" Maximum="255" Value="0" Margin="0,0,0,8" ValueChanged="Slider255_ValueChanged"/>
+
+            <!-- Slider 3: 0 - 30 (Power Range 1) -->
+            <TextBlock x:Name="TxtSlider30" Text="Power Scale A (0-30): 0" Margin="0,2,0,2"/>
+            <Slider x:Name="Slider30" Minimum="0" Maximum="30" Value="0" Margin="0,0,0,8" ValueChanged="Slider30_ValueChanged"/>
+
+            <!-- Slider 4: 0 - 10 (Power Range 2) -->
+            <TextBlock x:Name="TxtSlider10" Text="Power Scale B (0-10): 0" Margin="0,2,0,2"/>
+            <Slider x:Name="Slider10" Minimum="0" Maximum="10" Value="0" Margin="0,0,0,8" ValueChanged="Slider10_ValueChanged"/>
+        </StackPanel>
+    </Canvas>
 </Window>
